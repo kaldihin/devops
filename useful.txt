@@ -1,0 +1,316 @@
+xfreerdp
+
+Connecting
+
+xfreerdp /f /u:eugene /v:192.168.0.103
+
+Entering/exiting fullscreen mode
+
+Ctrl+Alt+Enter
+
+======================================================================================
+
+cyberpunk https://www.youtube.com/watch?v=W_cu3mS5UU4
+
+deep future radio youtube https://www.youtube.com/watch?v=N1FuK9KC1vc
+
+======================================================================================
+
+Connecting to work
+
+
+sudo openconnect vpn.rencredit.ru
+
+yes
+
+RA-VPN-GA
+
+
+xfreerdp /f /u:ext_ekaldikhin /v:10.150.2.210
+
+======================================================================================
+
+Changing password at work REN
+
+https://owa.rencredit.ru/
+
+======================================================================================
+
+Setting up YAOURT
+
+sudo pacman -S git
+git clone https://aur.archlinux.org/package-query.git 
+cd package-query
+
+
+In a freshly installed Arch Linux, I want to build a package (yaourt package) using makepkg command but I got the following error:
+
+[dhani@arch-vbox]: ~/package-query>$ makepkg -si
+==> ERROR: Cannot find the strip binary required for object file stripping.
+
+==> ERROR: An unknown error has occurred. Exiting...
+
+The error was caused by missing required packages to build or compile packages under Arch Linux. This error can be fixed by installing binutils, gcc, pkg-config and make package.
+
+sudo pacman -S binutils make gcc pkg-config fakeroot
+
+Now re run the makepkg package and now all should be resolved.
+
+
+makepkg -si 
+cd .. 
+git clone https://aur.archlinux.org/yaourt.git 
+cd yaourt 
+makepkg -si
+
+======================================================================================
+
+Setting up Flameshot button path
+
+/usr/bin/flameshot gui
+
+======================================================================================
+
+Fast check MAC address at linux
+
+ip a | grep ether | gawk ‘{print $2}’
+
+======================================================================================
+
+Setup network at Ubuntu 20.04 LTS
+
+/etc/netplan/*.yaml
+		
+network:
+    ethernets:
+        enp0s3:
+            dhcp4: no
+            dhcp6: no
+            addresses: [192.168.0.116/24, ]
+            gateway4: 192.168.0.1
+            nameservers:
+                    addresses: [192.168.0.1, ]
+    version: 2
+		
+sudo netplan try
+
+======================================================================================
+
+Setup static IP on Centos 7
+
+vi /etc/sysconfig/network-scripts/ifcfg-*
+
+HWADDR=45:08:02:88:AC:68
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=none          # Не используем протокол назначения Ip-адреса
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPADDR=192.168.0.251    # Назначаем статический IP-адрес
+NETMASK=255.255.255.0   # Маска подсети (или PREFIX=24)
+IPV6INIT=no             # Если не используете IpV6, то его можно отключить
+# IPV6_AUTOCONF=yes
+# IPV6_DEFROUTE=yes
+# IPV6_FAILURE_FATAL=no
+# IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=enp0s3
+UUID=3e9ee32f-0218-4644-a645-e9665057258a
+DEVICE=enp0s3
+ONBOOT=yes
+
+
+vi /etc/sysconfig/network
+
+NETWORKING=yes        # Конфигурация сети
+GATEWAY=192.168.0.1   # Адрес маршрутизатора
+
+
+vi /etc/resolv.conf
+
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+search meliorem.ru
+
+
+systemctl restart network
+
+======================================================================================
+
+Setup VBoxLinuxGuestAdditions on Centos 7
+
+
+1. Получаем root привелегии
+
+    Логинимся как root
+    либо переходим к root-у, через sudo -i
+    либо выполняем все дальнейшие команды через sudo <команда>.
+
+2. Обновляем ядро
+
+
+yum update kernel*
+
+ 
+
+3. Монтируем образ VirtualBox Guest Additions
+
+
+mkdir -p /media/VirtualBoxGuestAdditions
+mount -r /dev/cdrom /media/VirtualBoxGuestAdditions
+
+ 
+
+4. Добавляем репозиторий Epel
+	
+ 
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+ 
+
+
+5. Устанавливаем необходимые пакеты
+
+	
+ 
+yum install gcc kernel-devel kernel-headers dkms make bzip2 perl
+ 
+
+6. Устанавливаем переменную KERN_DIR
+
+	
+ 
+KERN_DIR=/usr/src/kernels/`uname -r`/build
+export KERN_DIR
+ 
+
+7. Устанавливаем VirtualBox Guest Additions
+
+	
+ 
+cd /media/VirtualBoxGuestAdditions
+./VBoxLinuxAdditions.run
+ 
+
+8. Перезагружаемся
+	
+ 
+reboot
+
+======================================================================================
+
+Setup static IP on manjaro
+
+ip a
+
+sudo systemctl disable --now NetworkManager.service
+
+
+sudo nano /etc/systemd/network/enp0s3.network
+
+[Match]
+Name=enp0s3
+
+[Network]
+Address=192.168.1.10/24
+Gateway=192.168.1.1
+DNS=8.8.8.8
+DNS=8.8.4.4
+
+
+sudo systemctl enable --now systemd-networkd.service
+
+======================================================================================
+
+Setup JAVA_HOME
+
+export PATH=$PATH:/usr/lib/jvm/java-11-openjdk-11.0.2.7-2.el8.x86_64/bin/
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.2.7-2.el8.x86_64/
+export J2SDKDIR=/usr/lib/jvm/java-11-openjdk-11.0.2.7-2.el8.x86_64/
+
+======================================================================================
+
+VNC Server Installing
+
+https://losst.ru/nastrojka-x11vnc-na-ubuntu
+
+======================================================================================
+
+List Users in MySQL
+
+SELECT User, Host FROM mysql.user;
+
+======================================================================================
+
+Disable the Beeper on Notebook
+
+https://manjaro.ru/manjaro-xfce-edition/otklyuchit-biper-beeper-sistemnyy-signal-resheno.html
+
+======================================================================================
+
+Alt + Shift on Ubuntu 20.04
+
+sudo apt install gnome-tweaks
+
+Gnome Settings change layer switch
+
+======================================================================================
+
+Zabbix Tuning
+
+/etc/zabbix/zabbix_server.conf
+
+StartPollers=50
+StartPreprocessors = 60
+StartPollersUnreachable=30
+StartPingers=100
+CacheSize=64M
+HistoryCacheSize=32M
+HistoryIndexCacheSize=16M
+TrendCacheSize=16M
+ValueCacheSize=32M
+Timeout=20
+
+======================================================================================
+
+Ubuntu browser video not opening
+
+sudo apt install ubuntu-restricted-extras
+
+======================================================================================
+
+Activating TeamViewer service on Manjaro
+
+
+sudo systemctl start teamviewerd.service
+
+======================================================================================
+
+VM VBox resolution problems (разрешение не меняется в виртуалке)
+
+When installing VBox Additions, check logs, maybe you'll need to install:
+
+- gcc , make , perl
+
+Then try again
+
+======================================================================================
+
+Linux set default audio output device
+
+
+pactl list short sinks
+
+pactl set-default-sink alsa_output.pci-0000_28_00.4.analog-stereo
+
+======================================================================================
+
+Adding current user to docker group, to run command without sudo
+
+
+sudo gpasswd -a $USER docker
+
+newgrp docker
+
+======================================================================================
+
+
