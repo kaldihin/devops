@@ -313,4 +313,19 @@ newgrp docker
 
 ======================================================================================
 
+For connecting to server through SSH key (PUBLIC KEY ON SERVER, PRIVATE ON HOST)
+
+ON SERVER:
+
+ssh-keygen
+
+cat id_rsa.pub > authorized_keys
+
+ON HOST WITH PUTTY:
+
+cat id_rsa (COPY TO HOST IN FORMAT .ppk)
+
+puttygen *.ppk -o *
+
+======================================================================================
 
