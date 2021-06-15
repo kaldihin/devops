@@ -1,7 +1,0 @@
-version: '3'
-
-services:
-  ftlo:
-    build: ftlo/
-    container_name: ftlo
-    hostname: 'srv800p17'
