@@ -353,4 +353,44 @@ http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
 
 ======================================================================================
 
+Installing ElasticSearch on CentOS
+
+
+# Previously You should better install JDK, 
+# beginning from ELasticSearch 7.* it is already included.
+
+sudo yum -y install java-openjdk-devel java-openjdk
+
+# Adding repository of ELK
+
+cat <<EOF | sudo tee /etc/yum.repos.d/elasticsearch.repo
+[elasticsearch-7.x]
+name=Elasticsearch repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOF
+
+# Adding GPG key
+
+sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+# Cleaning cache in yum
+
+sudo yum clean all
+
+sudo yum makecache
+
+# Install of ElasticSearch
+
+sudo yum -y install elasticsearch
+
+# Checking install
+
+rpm -qi elasticsearch
+
+======================================================================================
 
