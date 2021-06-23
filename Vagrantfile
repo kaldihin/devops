@@ -24,6 +24,61 @@ Vagrant.configure("2") do |config|
     ftnlo.vm.box = "luminositylabsllc/centos7"
 	ftnlo.vm.hostname = "ftnlo"
   end
+  
+  config.vm.define "ftwps" do |ftwps|
+    ftwps.vm.box = "luminositylabsllc/centos7"
+	ftwps.vm.hostname = "ftwps"
+  end
+  
+  config.vm.define "ntlo1" do |ntlo1|
+    ntlo1.vm.box = "luminositylabsllc/centos7"
+	ntlo1.vm.hostname = "ntlo1"
+  end
+  
+  config.vm.define "ntlo2" do |ntlo2|
+    ntlo2.vm.box = "luminositylabsllc/centos7"
+	ntlo2.vm.hostname = "ntlo2"
+  end
+  
+  config.vm.define "ntnlo1" do |ntnlo1|
+    ntnlo1.vm.box = "luminositylabsllc/centos7"
+	ntnlo1.vm.hostname = "ntnlo1"
+  end
+  
+  config.vm.define "ntnlo2" do |ntnlo2|
+    ntnlo2.vm.box = "luminositylabsllc/centos7"
+	ntnlo2.vm.hostname = "ntnlo2"
+  end
+  
+  config.vm.define "ntwps1" do |ntwps1|
+    ntwps1.vm.box = "luminositylabsllc/centos7"
+	ntwps1.vm.hostname = "ntwps1"
+  end
+  
+  config.vm.define "ntwps2" do |ntwps2|
+    ntwps2.vm.box = "luminositylabsllc/centos7"
+	ntwps2.vm.hostname = "ntwps2"
+  end
+  
+  config.vm.define "testlo1" do |testlo1|
+    testlo1.vm.box = "luminositylabsllc/centos7"
+	testlo1.vm.hostname = "testlo1"
+  end
+  
+  config.vm.define "testlo2" do |testlo2|
+    testlo2.vm.box = "luminositylabsllc/centos7"
+	testlo2.vm.hostname = "testlo2"
+  end
+  
+  config.vm.define "testnlo" do |testnlo|
+    testnlo.vm.box = "luminositylabsllc/centos7"
+	testnlo.vm.hostname = "testnlo"
+  end
+  
+  config.vm.define "testwps" do |testwps|
+    testwps.vm.box = "luminositylabsllc/centos7"
+	testwps.vm.hostname = "testwps"
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
