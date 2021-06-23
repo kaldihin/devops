@@ -338,6 +338,14 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ======================================================================================
 
+Install Auto Vagrant VirtualBox Guest Additions
+
+
+vagrant plugin install vagrant-vbguest
+
+======================================================================================
+
+
 в политиках selinux прописано, на каких партах могут работать сервисы; вы используете нестандартный порт для web-сервера
 вам понадобится утилита semanage:
 yum install policycoreutils-python
@@ -391,6 +399,66 @@ sudo yum -y install elasticsearch
 # Checking install
 
 rpm -qi elasticsearch
+
+# Adding to startup
+
+sudo systemctl enable --now elasticsearch.service 
+
+# Check startup
+
+url http://127.0.0.1:9200
+
+# Test index creating
+
+curl -X PUT "http://127.0.0.1:9200/mytest_index"
+
+# Installing Kibana
+
+sudo yum -y install kibana
+
+# Setup Kibana
+
+sudo vi /etc/kibana/kibana.yml
+
+	server.host: "0.0.0.0"
+	server.name: "kibana.example.com"
+	elasticsearch.hosts: ["http://localhost:9200"]
+
+# Adding Firewall exceptions
+
+sudo firewall-cmd --add-port=5601/tcp --permanent
+
+sudo firewall-cmd --reload
+
+# Adding Kibana service on startup
+
+sudo systemctl enable --now kibana
+
+# Installing Logstash
+
+sudo yum -y install logstash
+
+# Starting service Logstash
+
+sudo systemctl enable --now logstash
+
+# Additional instruments beats type
+
+sudo yum -y install filebeat auditbeat metricbeat packetbeat heartbeat-elastic
+
+# Enabling at startup service
+
+sudo systemctl enable --now filebeat;
+
+sudo systemctl enable --now auditbeat;
+
+sudo systemctl enable --now metricbeat;
+
+sudo systemctl enable --now packetbeat;
+
+sudo systemctl enable --now heartbeat-elastic;
+
+
 
 ======================================================================================
 

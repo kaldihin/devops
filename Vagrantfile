@@ -12,15 +12,17 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "centos/7"
+  
+  # config.vm.provision :shell, path: "startup.sh"
 
   config.vm.define "ftlo" do |ftlo|
-    ftlo.vm.box = "centos/7"
-    config.vm.hostname = "ftlo"
+    ftlo.vm.box = "luminositylabsllc/centos7"
+    ftlo.vm.hostname = "ftlo"
   end
   
-  config.vm.define "ftnonlo" do |ftnonlo|
-    ftnonlo.vm.box = "centos/7"
+  config.vm.define "ftnlo" do |ftnlo|
+    ftnlo.vm.box = "luminositylabsllc/centos7"
+	ftnlo.vm.hostname = "ftnlo"
   end
 
   # Disable automatic box update checking. If you disable this, then
