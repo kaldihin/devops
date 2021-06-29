@@ -5,6 +5,10 @@ if [[ `id -u` -ne 0 ]]
   exit 1
 fi
 
+#if [ hostname = srv800p17 ]
+#  then
+#    if [ /opt/esb/profiles62/temp 
+
 NODA=dmgr
 
 for (( i = 1; i < 9; i++ )) do
