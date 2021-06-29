@@ -17,12 +17,14 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "ftlo" do |ftlo|
     ftlo.vm.box = "luminositylabsllc/centos7"
-    ftlo.vm.hostname = "ftlo"
+    ftlo.vm.hostname = "srv800p17"
+	ftlo.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ftnlo" do |ftnlo|
     ftnlo.vm.box = "luminositylabsllc/centos7"
-	ftnlo.vm.hostname = "ftnlo"
+	ftnlo.vm.hostname = "srv800p16"
+	ftnlo.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ftwps" do |ftwps|
