@@ -29,57 +29,68 @@ Vagrant.configure("2") do |config|
   
   config.vm.define "ftwps" do |ftwps|
     ftwps.vm.box = "luminositylabsllc/centos7"
-	ftwps.vm.hostname = "ftwps"
+	ftwps.vm.hostname = "srv800p18"
+	ftwps.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntlo1" do |ntlo1|
     ntlo1.vm.box = "luminositylabsllc/centos7"
-	ntlo1.vm.hostname = "ntlo1"
+	ntlo1.vm.hostname = "srv560p05"
+	ntlo1.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntlo2" do |ntlo2|
     ntlo2.vm.box = "luminositylabsllc/centos7"
-	ntlo2.vm.hostname = "ntlo2"
+	ntlo2.vm.hostname = "srv560p06"
+	ntlo2.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntnlo1" do |ntnlo1|
     ntnlo1.vm.box = "luminositylabsllc/centos7"
-	ntnlo1.vm.hostname = "ntnlo1"
+	ntnlo1.vm.hostname = "srvh03p06"
+	ntnlo1.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntnlo2" do |ntnlo2|
     ntnlo2.vm.box = "luminositylabsllc/centos7"
-	ntnlo2.vm.hostname = "ntnlo2"
+	ntnlo2.vm.hostname = "srvh03p07"
+	ntnlo2.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntwps1" do |ntwps1|
     ntwps1.vm.box = "luminositylabsllc/centos7"
-	ntwps1.vm.hostname = "ntwps1"
+	ntwps1.vm.hostname = "srv560p05"
+	ntwps1.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "ntwps2" do |ntwps2|
     ntwps2.vm.box = "luminositylabsllc/centos7"
-	ntwps2.vm.hostname = "ntwps2"
+	ntwps2.vm.hostname = "srv560p06"
+	ntwps2.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "testlo1" do |testlo1|
     testlo1.vm.box = "luminositylabsllc/centos7"
-	testlo1.vm.hostname = "testlo1"
+	testlo1.vm.hostname = "srv560p01"
+	testlo1.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "testlo2" do |testlo2|
     testlo2.vm.box = "luminositylabsllc/centos7"
-	testlo2.vm.hostname = "testlo2"
+	testlo2.vm.hostname = "srv560p04"
+	testlo2.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "testnlo" do |testnlo|
     testnlo.vm.box = "luminositylabsllc/centos7"
-	testnlo.vm.hostname = "testnlo"
+	testnlo.vm.hostname = "srvh03p04"
+	testnlo.vm.synced_folder "./scripts/", "/opt/"
   end
   
   config.vm.define "testwps" do |testwps|
     testwps.vm.box = "luminositylabsllc/centos7"
-	testwps.vm.hostname = "testwps"
+	testwps.vm.hostname = "srv560p04"
+	testwps.vm.synced_folder "./scripts/", "/opt/"
   end
 
   # Disable automatic box update checking. If you disable this, then
