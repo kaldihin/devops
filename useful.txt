@@ -458,7 +458,12 @@ sudo systemctl enable --now packetbeat;
 
 sudo systemctl enable --now heartbeat-elastic;
 
+======================================================================================
+
+Installing and configuring Prometheus
+
 
 
 ======================================================================================
+
 

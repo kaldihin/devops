@@ -1,0 +1,52 @@
+'')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${}${TEMP}"somelog${RANDOM}.log"
+        touch ${}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${}${TEMP}"somelog${RANDOM}.log"
+        touch ${}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${}${TEMP}"somelog${RANDOM}.log"
+        touch ${}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  
+	  '')
+		if [ ! -d "${}" ]
+		  then
+		    mkdir -p ${}
+			mkdir -p ${}${TEMP}
+			mkdir -p ${}${CONFIGTEMP}
+			mkdir -p ${}${WSTEMP}
+			mkdir -p ${}${TRANLOG}
+		fi
+
+		if [ ! -d "${}" ]
+		  then
+	        mkdir -p ${}
+		    mkdir -p ${}${TEMP}
+			mkdir -p ${}${CONFIGTEMP}
+			mkdir -p ${}${WSTEMP}
+			mkdir -p ${}${TRANLOG}
+		fi
+
+		if [ ! -d "${}" ]
+		  then
+		    mkdir -p ${}
+			mkdir -p ${}${TEMP}
+			mkdir -p ${}${CONFIGTEMP}
+			mkdir -p ${}${WSTEMP}
+			mkdir -p ${}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
