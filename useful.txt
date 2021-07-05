@@ -464,6 +464,17 @@ Installing and configuring Prometheus
 
 
 
+
+======================================================================================
+
+Installing and configuring Ansible (Centos7)
+
+sudo yum install epel-release
+
+sudo yum install ansible
+
+
+
 ======================================================================================
 
 
