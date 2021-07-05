@@ -110,10 +110,10 @@ fulldir() {
 	  
 	  'srv560p05')
       for (( i = 1; i < 9; i++ )) do
-        touch ${FTLODMGRNTLO1DMGR}${TEMP}"somelog${RANDOM}.log"
-        touch ${FTLODMGRNTLO1DMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
-        touch ${FTLODMGRNTLO1DMGR}${WSTEMP}"somelog${RANDOM}.log"
-        touch ${FTLODMGRNTLO1DMGR}${TRANLOG}"somelog${RANDOM}.log"
+        touch ${NTLO1DMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTLO1DMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO1DMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO1DMGR}${TRANLOG}"somelog${RANDOM}.log"
 		
 		touch ${NTLO1WPS}${TEMP}"somelog${RANDOM}.log"
         touch ${NTLO1WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
@@ -128,7 +128,146 @@ fulldir() {
       done
 	  ;;
 	  
+	  'srv560p06')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${NTLO2WPS}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2WPS}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2WPS}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${NTLO2BIP0002}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2BIP0002}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2BIP0002}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTLO2BIP0002}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
 	  
+	  'srvh03p06')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${NTNLO1DMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1DMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1DMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1DMGR}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${NTNLO1WPS}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1WPS}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1WPS}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${NTNLO1NODE3}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1NODE3}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1NODE3}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO1NODE3}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  'srvh03p07')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${NTNLO2WPS}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO2WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO2WPS}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLO2WPS}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srv560p05')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${NTNLOWPS1DMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1DMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1DMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1DMGR}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${NTNLOWPS1NODE}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1NODE}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1NODE}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS1NODE}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srv560p06')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${NTNLOWPS2NODE}${TEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS2NODE}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS2NODE}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${NTNLOWPS2NODE}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srv560p01')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${TESTLO1DMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1DMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1DMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1DMGR}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${TESTLO1WPS}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1WPS}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1WPS}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${TESTLO1BIPNODE01}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1BIPNODE01}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1BIPNODE01}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO1BIPNODE01}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srv560p04')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${TESTLO2WPS}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2WPS}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2WPS}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2WPS}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${TESTLO2BIPNODE02}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2BIPNODE02}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2BIPNODE02}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTLO2BIPNODE02}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srvh03p04')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${TESTNLODMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLODMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLODMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLODMGR}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${TESTNLONODE1}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLONODE1}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLONODE1}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLONODE1}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
+	  
+	  
+	  'srv560p04')
+      for (( i = 1; i < 9; i++ )) do
+        touch ${TESTNLOWPSDMGR}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSDMGR}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSDMGR}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSDMGR}${TRANLOG}"somelog${RANDOM}.log"
+		
+		touch ${TESTNLOWPSNODE}${TEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSNODE}${CONFIGTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSNODE}${WSTEMP}"somelog${RANDOM}.log"
+        touch ${TESTNLOWPSNODE}${TRANLOG}"somelog${RANDOM}.log"
+		
+      done
+	  ;;
 	  
   esac
 }
@@ -238,6 +377,210 @@ case ${HOSTNAME} in
 			mkdir -p ${NTLO1BIP0001}${CONFIGTEMP}
 			mkdir -p ${NTLO1BIP0001}${WSTEMP}
 			mkdir -p ${NTLO1BIP0001}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srv560p06')
+		if [ ! -d "${NTLO2WPS}" ]
+		  then
+		    mkdir -p ${NTLO2WPS}
+			mkdir -p ${NTLO2WPS}${TEMP}
+			mkdir -p ${NTLO2WPS}${CONFIGTEMP}
+			mkdir -p ${NTLO2WPS}${WSTEMP}
+			mkdir -p ${NTLO2WPS}${TRANLOG}
+		fi
+
+		if [ ! -d "${NTLO2BIP0002}" ]
+		  then
+	        mkdir -p ${NTLO2BIP0002}
+		    mkdir -p ${NTLO2BIP0002}${TEMP}
+			mkdir -p ${NTLO2BIP0002}${CONFIGTEMP}
+			mkdir -p ${NTLO2BIP0002}${WSTEMP}
+			mkdir -p ${NTLO2BIP0002}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		'srvh03p06')
+		if [ ! -d "${NTNLO1DMGR}" ]
+		  then
+		    mkdir -p ${NTNLO1DMGR}
+			mkdir -p ${NTNLO1DMGR}${TEMP}
+			mkdir -p ${NTNLO1DMGR}${CONFIGTEMP}
+			mkdir -p ${NTNLO1DMGR}${WSTEMP}
+			mkdir -p ${NTNLO1DMGR}${TRANLOG}
+		fi
+
+		if [ ! -d "${NTNLO1WPS}" ]
+		  then
+	        mkdir -p ${NTNLO1WPS}
+		    mkdir -p ${NTNLO1WPS}${TEMP}
+			mkdir -p ${NTNLO1WPS}${CONFIGTEMP}
+			mkdir -p ${NTNLO1WPS}${WSTEMP}
+			mkdir -p ${NTNLO1WPS}${TRANLOG}
+		fi
+
+		if [ ! -d "${NTNLO1NODE3}" ]
+		  then
+		    mkdir -p ${NTNLO1NODE3}
+			mkdir -p ${NTNLO1NODE3}${TEMP}
+			mkdir -p ${NTNLO1NODE3}${CONFIGTEMP}
+			mkdir -p ${NTNLO1NODE3}${WSTEMP}
+			mkdir -p ${NTNLO1NODE3}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		'srvh03p07')
+		if [ ! -d "${NTNLO2WPS}" ]
+		  then
+		    mkdir -p ${NTNLO2WPS}
+			mkdir -p ${NTNLO2WPS}${TEMP}
+			mkdir -p ${NTNLO2WPS}${CONFIGTEMP}
+			mkdir -p ${NTNLO2WPS}${WSTEMP}
+			mkdir -p ${NTNLO2WPS}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srv560p05')
+		if [ ! -d "${NTNLOWPS1DMGR}" ]
+		  then
+		    mkdir -p ${NTNLOWPS1DMGR}
+			mkdir -p ${NTNLOWPS1DMGR}${TEMP}
+			mkdir -p ${NTNLOWPS1DMGR}${CONFIGTEMP}
+			mkdir -p ${NTNLOWPS1DMGR}${WSTEMP}
+			mkdir -p ${NTNLOWPS1DMGR}${TRANLOG}
+		fi
+
+		if [ ! -d "${NTNLOWPS1NODE}" ]
+		  then
+	        mkdir -p ${NTNLOWPS1NODE}
+		    mkdir -p ${NTNLOWPS1NODE}${TEMP}
+			mkdir -p ${NTNLOWPS1NODE}${CONFIGTEMP}
+			mkdir -p ${NTNLOWPS1NODE}${WSTEMP}
+			mkdir -p ${NTNLOWPS1NODE}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		'srv560p06')
+		if [ ! -d "${NTNLOWPS2NODE}" ]
+		  then
+		    mkdir -p ${NTNLOWPS2NODE}
+			mkdir -p ${NTNLOWPS2NODE}${TEMP}
+			mkdir -p ${NTNLOWPS2NODE}${CONFIGTEMP}
+			mkdir -p ${NTNLOWPS2NODE}${WSTEMP}
+			mkdir -p ${NTNLOWPS2NODE}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srv560p01')
+		if [ ! -d "${TESTLO1DMGR}" ]
+		  then
+		    mkdir -p ${TESTLO1DMGR}
+			mkdir -p ${TESTLO1DMGR}${TEMP}
+			mkdir -p ${TESTLO1DMGR}${CONFIGTEMP}
+			mkdir -p ${TESTLO1DMGR}${WSTEMP}
+			mkdir -p ${TESTLO1DMGR}${TRANLOG}
+		fi
+
+		if [ ! -d "${TESTLO1WPS}" ]
+		  then
+	        mkdir -p ${TESTLO1WPS}
+		    mkdir -p ${TESTLO1WPS}${TEMP}
+			mkdir -p ${TESTLO1WPS}${CONFIGTEMP}
+			mkdir -p ${TESTLO1WPS}${WSTEMP}
+			mkdir -p ${TESTLO1WPS}${TRANLOG}
+		fi
+
+		if [ ! -d "${TESTLO1BIPNODE01}" ]
+		  then
+		    mkdir -p ${TESTLO1BIPNODE01}
+			mkdir -p ${TESTLO1BIPNODE01}${TEMP}
+			mkdir -p ${TESTLO1BIPNODE01}${CONFIGTEMP}
+			mkdir -p ${TESTLO1BIPNODE01}${WSTEMP}
+			mkdir -p ${TESTLO1BIPNODE01}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srv560p04')
+		if [ ! -d "${TESTLO2WPS}" ]
+		  then
+	        mkdir -p ${TESTLO2WPS}
+		    mkdir -p ${TESTLO2WPS}${TEMP}
+			mkdir -p ${TESTLO2WPS}${CONFIGTEMP}
+			mkdir -p ${TESTLO2WPS}${WSTEMP}
+			mkdir -p ${TESTLO2WPS}${TRANLOG}
+		fi
+
+		if [ ! -d "${TESTLO2BIPNODE02}" ]
+		  then
+		    mkdir -p ${TESTLO2BIPNODE02}
+			mkdir -p ${TESTLO2BIPNODE02}${TEMP}
+			mkdir -p ${TESTLO2BIPNODE02}${CONFIGTEMP}
+			mkdir -p ${TESTLO2BIPNODE02}${WSTEMP}
+			mkdir -p ${TESTLO2BIPNODE02}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srvh03p04')
+		if [ ! -d "${TESTNLODMGR}" ]
+		  then
+		    mkdir -p ${TESTNLODMGR}
+			mkdir -p ${TESTNLODMGR}${TEMP}
+			mkdir -p ${TESTNLODMGR}${CONFIGTEMP}
+			mkdir -p ${TESTNLODMGR}${WSTEMP}
+			mkdir -p ${TESTNLODMGR}${TRANLOG}
+		fi
+
+		if [ ! -d "${TESTNLONODE1}" ]
+		  then
+	        mkdir -p ${TESTNLONODE1}
+		    mkdir -p ${TESTNLONODE1}${TEMP}
+			mkdir -p ${TESTNLONODE1}${CONFIGTEMP}
+			mkdir -p ${TESTNLONODE1}${WSTEMP}
+			mkdir -p ${TESTNLONODE1}${TRANLOG}
+		fi
+		
+		fulldir ${HOSTNAME}
+		;;
+		
+		
+		'srv560p04')
+		if [ ! -d "${TESTNLOWPSDMGR}" ]
+		  then
+		    mkdir -p ${TESTNLOWPSDMGR}
+			mkdir -p ${TESTNLOWPSDMGR}${TEMP}
+			mkdir -p ${TESTNLOWPSDMGR}${CONFIGTEMP}
+			mkdir -p ${TESTNLOWPSDMGR}${WSTEMP}
+			mkdir -p ${TESTNLOWPSDMGR}${TRANLOG}
+		fi
+
+		if [ ! -d "${TESTNLOWPSNODE}" ]
+		  then
+	        mkdir -p ${TESTNLOWPSNODE}
+		    mkdir -p ${TESTNLOWPSNODE}${TEMP}
+			mkdir -p ${TESTNLOWPSNODE}${CONFIGTEMP}
+			mkdir -p ${TESTNLOWPSNODE}${WSTEMP}
+			mkdir -p ${TESTNLOWPSNODE}${TRANLOG}
 		fi
 		
 		fulldir ${HOSTNAME}
