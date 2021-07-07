@@ -317,11 +317,15 @@ For connecting to server through SSH key (PUBLIC KEY ON SERVER, PRIVATE ON HOST)
 
 ON SERVER:
 
+!!! chmod 700 ~/.ssh !!!
+
 ssh-keygen
 
 cat id_rsa.pub > authorized_keys
 
 ON HOST WITH PUTTY:
+
+!!! chmod 600 ~/.ssh !!!
 
 cat id_rsa (COPY TO HOST IN FORMAT .ppk)
 
