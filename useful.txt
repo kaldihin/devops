@@ -481,4 +481,23 @@ sudo yum install ansible
 
 ======================================================================================
 
+Manjaro packets delete with Pacman
+
+pacman -Rs название пакета
+
+Далее чисти кэш
+pacman -Scc
+
+======================================================================================
+
+Manjaro GRUB background editing
+
+/usr/share/grub/themes/manjaro/background.png
+
+sudo update-grub
+
+======================================================================================
+
+
+
 
