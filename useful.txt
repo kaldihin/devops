@@ -128,6 +128,8 @@ GATEWAY=192.168.0.1   # Адрес маршрутизатора
 
 vi /etc/resolv.conf
 
+nameserver 192.168.0.1
+
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 search meliorem.ru
@@ -497,6 +499,77 @@ Manjaro GRUB background editing
 sudo update-grub
 
 ======================================================================================
+
+Centos SELINUX disabling
+
+
+Edit with sudo /etc/selinux/config and set SELINUX=disabled or execute command:
+
+sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+
+
+======================================================================================
+
+## Installing Zookeeper + Kafka on Centos ##
+
+
+Before installation, be sure that JAVA is installed
+
+For example:
+
+sudo yum install java-11-openjdk-devel
+
+java -version
+
+Then set JAVA_HOME variable to the path to java , put the following strings in ~/.bashrc
+
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el7_9.x86_64/bin
+
+bash or relogin
+
+Then download the last version of Zookeeper
+
+https://zookeeper.apache.org/releases.html#download
+
+
+tar -zxf apache-zookeeper-*.tar.gz
+
+rm apache-zookeeper-*.tar.gz
+
+sudo mv apache-zookeeper-* /usr/local/zookeeper
+
+sudo mkdir -p /var/lib/zookeeper
+
+sed 's/dataDir=\/tmp\/zookeeper/dataDir=\/var\/lib\/zookeeper/' /usr/local/zookeeper/conf/zoo_sample.cfg > /usr/local/zookeeper/conf/zoo.cfg
+
+sudo /usr/local/zookeeper/bin/zkServer.sh start
+
+telnet localhost 2181
+
+
+After it, we can install Kafka , download it (not source, choose BINARY download)
+
+http://kafka.apache.org/downloads.html
+
+tar -zxf kafka_*.tgz
+
+rm kafka_*.tgz
+
+sudo mv kafka_* /usr/local/kafka
+
+sudo mkdir /tmp/kafka-logs
+
+/usr/local/kafka/bin/kafka-server-start.sh -daemon /usr/local/kafka/config/server.properties
+
+/usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+
+server.1=zoo1.example.com:2888:3888
+
+server.2=zoo2.example.com:2888:3888
+
+server.3=zoo3.example.com:2888:3888
+
 
 
 
