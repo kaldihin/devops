@@ -19,6 +19,12 @@ deep future radio youtube https://www.youtube.com/watch?v=N1FuK9KC1vc
 Connecting to work
 
 
+Global Protect VPN
+
+sudo openconnect --protocol=gp --os=win neovpn64.neoflex.ru
+
+RenCredit
+
 sudo openconnect vpn.rencredit.ru
 
 yes
