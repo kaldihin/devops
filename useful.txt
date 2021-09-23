@@ -295,7 +295,7 @@ sudo systemctl start teamviewerd.service
 
 VM VBox resolution problems (разрешение не меняется в виртуалке)
 
-When installing VBox Additions, check logs, maybe you'll need to install:
+When installing VBox Additions, check logs, maybe you will need to install
 
 - gcc , make , perl
 
@@ -470,10 +470,9 @@ sudo systemctl enable --now packetbeat;
 
 sudo systemctl enable --now heartbeat-elastic;
 
-======================================================================================
+# ======================================================================================
 
 Installing and configuring Prometheus
-
 
 
 
@@ -578,5 +577,40 @@ server.3=zoo3.example.com:2888:3888
 
 
 
+======================================================================================
+
+## Installing Jenkins on Centos
+
+sudo yum -y remove java
+
+sudo yum -y install java-1.8.0-openjdk
+
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+
+sudo yum install epel-release
+
+sudo yum install java-11-openjdk-devel
+
+sudo yum install jenkins
+
+
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+
+sudo firewall-cmd --reload
+
+
+sudo systemctl enable jenkins
+
+sudo systemctl start jenkins
+
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+======================================================================================
 
 
