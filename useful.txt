@@ -613,4 +613,35 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ======================================================================================
 
+## Remounting disk in RW mode
+
+sudo mount -o remount,rw /dev/sda2
+
+======================================================================================
+
+soft
+
+
+Remmina
+Telegram
+Skype
+GIMP
+Spotify
+VBOX
+Filezilla
+Pycharm
+Qbit
+Teams
+notepadqq
+terminator
+anydesk
+etcher
+openconnect
+citrix workspace
+flameshot
+teamviewer
+timeshift
+zoom
+
+
 
