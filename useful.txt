@@ -644,4 +644,26 @@ timeshift
 zoom
 
 
+======================================================================================
+
+# Auto Mounting in Unix through /etc/fstab
+# Авто Монтирование устройств в Unix через /etc/fstab
+
+# Check name of device
+sudo fdisk -l
+
+# Check UUID for device
+sudo blkid
+
+# Edit file /etc/fstab
+sudo vim /etc/fstab
+
+# Put the next content to fstab file for mounting by UUID
+UUID=af406bcd-cddb-4095-8456-fdf8dfe37665	/var/www	ntfs	defaults	0	0
+
+# Put the next content to fstab file for mounting by device name
+/dev/nvme0n1p3	/var/www	ntfs	defaults	0	0
+
+======================================================================================
+
 
