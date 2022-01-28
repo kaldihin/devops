@@ -341,12 +341,28 @@ puttygen *.ppk -o *
 
 ======================================================================================
 
-CentOS grub updating
+# CentOS grub updating
 
 
 sudo vi /etc/default/grub
 
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+
+======================================================================================
+
+# Ubuntu grub updating
+# Изменение параметров GRUB в Ubuntu
+
+sudo vim /etc/default/grub
+
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_TIMEOUT=1
+
+
+sudo update-grub
+
 
 ======================================================================================
 
