@@ -693,3 +693,17 @@ Firefox
 Qbittorent
 KMPlayer
 
+
+======================================================================================
+
+# Removing problem repos from apt in Ubuntu
+# Удаление проблемных репозиториев в Ubuntu
+
+grep -v "^#\|^$" /etc/apt/sources.list{,.d/*.list}
+
+ls -alt /etc/apt/sources.list.d/
+
+sudo rm -rf /etc/apt/sources.list.d/$Problem_repo
+
+======================================================================================
+
