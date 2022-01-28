@@ -680,6 +680,12 @@ UUID=af406bcd-cddb-4095-8456-fdf8dfe37665	/var/www	ntfs	defaults	0	0
 # Put the next content to fstab file for mounting by device name
 /dev/nvme0n1p3	/var/www	ntfs	defaults	0	0
 
+# Winda
+UUID=5E1EC01D1EBFEBE1   /media/eugene   ntfs    defaults    0   0
+
+# BIG
+UUID=6C986E19986DE1D6   /media/eugene   ntfs    defaults    0   0
+
 ======================================================================================
 
 Winda soft
