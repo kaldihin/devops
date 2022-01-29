@@ -729,3 +729,12 @@ sudo rm -rf /etc/apt/sources.list.d/$Problem_repo
 
 ======================================================================================
 
+
+# Correcting time on PC with Linux and Windows
+# Изменение времени на ПК с Linux и Windows
+
+# Perform on Linux host(Ubuntu case)
+timedatectl set-local-rtc 1
+
+======================================================================================
+
