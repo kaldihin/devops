@@ -1,46 +1,4 @@
-xfreerdp
 
-Connecting
-
-xfreerdp /f /u:eugene /v:192.168.0.103
-
-Entering/exiting fullscreen mode
-
-Ctrl+Alt+Enter
-
-======================================================================================
-
-cyberpunk https://www.youtube.com/watch?v=W_cu3mS5UU4
-
-deep future radio youtube https://www.youtube.com/watch?v=N1FuK9KC1vc
-
-======================================================================================
-
-Connecting to work
-
-
-Global Protect VPN
-
-sudo openconnect --protocol=gp --os=win neovpn64.neoflex.ru
-
-RenCredit
-
-sudo openconnect vpn.rencredit.ru
-
-yes
-
-RA-VPN-GA
-
-
-xfreerdp /f /u:ext_ekaldikhin /v:10.150.2.210
-
-======================================================================================
-
-Changing password at work REN
-
-https://owa.rencredit.ru/
-
-======================================================================================
 
 Setting up YAOURT
 
@@ -635,29 +593,47 @@ sudo mount -o remount,rw /dev/sda2
 
 ======================================================================================
 
-soft
+# Unix soft
 
+Qbit
+sudo apt install qbittorrent
 
+Filezilla
+sudo apt install filezilla
+
+Vbox
+sudo apt install virtualbox
+
+Gimp
+sudo apt install gimp
+
+Pycharm
+sudo snap install pycharm-community --classic
+
+Teams
+
+terminator
+sudo apt install terminator
+
+anydesk
+
+openconnect
+sudo apt install openconnect
+
+citrix workspace
+
+flameshot
+flatpak install flameshot
+
+teamviewer
+
+timeshift
+sudo apt install timeshift
+
+zoom
 Remmina
 Telegram
 Skype
-GIMP
-Spotify
-VBOX
-Filezilla
-Pycharm
-Qbit
-Teams
-notepadqq
-terminator
-anydesk
-etcher
-openconnect
-citrix workspace
-flameshot
-teamviewer
-timeshift
-zoom
 
 
 ======================================================================================
@@ -743,6 +719,26 @@ timedatectl set-local-rtc 1
 # Генерация открытого .pub ключа из закрытого ключа SSH
 
 ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+
+======================================================================================
+
+# GIT tips
+
+# create a new repository on the command line
+
+echo "# inferno" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:kaldihin/inferno.git
+git push -u origin main
+
+# push an existing repository from the command line
+
+git remote add origin git@github.com:kaldihin/inferno.git
+git branch -M main
+git push -u origin main
 
 ======================================================================================
 

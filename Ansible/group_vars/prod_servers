@@ -1,0 +1,5 @@
+---
+
+ansible_user            : eugene
+ansible_sudo_pass       : 12qw!@QW
+ansible_ssh_private_key : /home/eugene/.ssh/id_rsa

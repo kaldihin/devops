@@ -1,0 +1,37 @@
+---
+- name: Install Apache and Upload my web page
+  hosts: all
+  become: yes
+
+
+  vars:
+    source_file: ./MyWebSite/index.html
+    destin_file: /var/www/html
+
+
+  tasks:
+  - name: Check and Print LINUX version
+    debug: var=ansible_os_family
+    
+    
+    
+    
+    
+    
+---
+- name: playbook for copying ssh keys
+  hosts: control
+  gather_facts: False
+
+tasks:
+- name: set permissions for .ssh directory
+  file: path=/home/sahil/.ssh mode=0700
+
+- name: create authorized_keys file
+  file: path=/home/sahil/.ssh/authorized_keys state=touch mode=0644
+
+- name: insert public ssh key for user sahil
+  blockinfile:
+  dest: /home/sahil/.ssh/authorized_keys
+  block: |
+   ssh-dss AAAAB3NzaC1kc3MAAACBAI4cJkRKzPG637N1TOJM0nDkXVH+eLIlXW+A/telRWsGJe0WRkDSAx+kQwz8TrzoMTDTCoJFmTETfmsSpMx2SeIlPRQS0Rtyz43uyFh8/XjvmgXNPAAAAFQCAK7jcuIfX+MhPtdT5y35Px6Ex1QAAAIBSMuF4Oo1oygerPSP4PszLKISxEmk1QjrCW8nLdYQeuYzZF9+cXUIzhp/a2EQUwUuGXHxM7XDJ8143bgYyTJZ/bFrNiwkXYx0YP0HOYhavkBAHddkdB6uC6mTtqGRkJSdMH4heBjbJBocCY424H6jtxrta9u/ORxBoTBQYPxnEyQAAAIAzIq3FhIU+cq+C7RF9HQh3qUmWMFv8l/5gQyoW3HpU6SqChtFADQpXuhZUgru5rdaT9wWHCn4t9gCDXVyfvprkt9AixQnxSmEabWct6bE2P7GSXXoP6Xx5iJjIg== sahil@sahil-centos

@@ -1,0 +1,1 @@
+{"virtualbox":{"/run/scripts/":{"guestpath":"/run/scripts","hostpath":"/home/eugene/Рабочий стол/devops/tranlogs/scripts","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/eugene/Рабочий стол/devops/tranlogs","disabled":false,"__vagrantfile":true}}}

@@ -1,0 +1,27 @@
+#[staging_servers]
+#neocent  ansible_host=192.168.0.111
+#ubusrv  ansible_host=192.168.0.115
+
+[other_servers]
+ubuntusql  ansible_host=192.168.0.110
+
+[prod_servers]
+elkcentos  ansible_host=192.168.0.116
+neocent  ansible_host=192.168.0.111
+ubusrv  ansible_host=192.168.0.115
+cent8  ansible_host=192.168.0.190
+gitlab  ansible_host=192.168.0.134  ansible_user=eugene  ansible_pass=12qw!@QW
+
+#[staging_ALL:children]
+#staging_servers
+#other_servers
+
+[other_servers:vars]
+message=Hello
+
+#[windows_servers]
+#winserver2019  ansible_host=192.168.0.118  
+#win7  ansible_host=192.168.0.117
+
+[prod_servers:vars]
+owner=Petuh
