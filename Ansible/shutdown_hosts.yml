@@ -1,0 +1,8 @@
+---
+- name: Shutdown Unix host
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Shutdown
+    shell: shutdown
