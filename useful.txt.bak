@@ -922,14 +922,5 @@ Compiling code from source takes a little while, but once that’s finished, we 
 [root@centos7 Python-3.8.1]# python3.8
 
 
-======================================================================================
-
-# At Centos yum throws an error Cannot prepare internal mirrorlist: No URLs in mirrorlist
-
-sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
-
-sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-*
-
-======================================================================================
 
 
