@@ -1,0 +1,8 @@
+---
+- name: shutdow machine
+  hosts: all
+  remote_user: eugene
+  become: yes
+  tasks:
+  - name: shut
+    community.general.shutdown:
