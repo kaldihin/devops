@@ -1,0 +1,12 @@
+---
+- name: my personal file
+  hosts: localhost
+  tasks:
+  - name: creating a file suka.txt
+    file:
+      state: touch
+      path: ~/suka.txt
+  - name: filling file suka.txt
+    lineinfile:
+      line: "Hi Pidor"
+      path: ~/suka.txt

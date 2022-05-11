@@ -1,0 +1,24 @@
+---
+# These tasks install and enable apache on webservers
+- name: ensure mysql is installed
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-server
+    - MySQL-python
+- name: ensure mysql is running
+  service: name=mysqld state=started enabled=yes
+- name: create application database
+  mysql_db:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ansible_db01
+    - ansible_db02
+- name: create application user
+  mysql_user:
+    name: "{{ dbuser }}"
+    password: "{{ dbpassword }}"
+    priv: "*.*:ALL"
+    state: present

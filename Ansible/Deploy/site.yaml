@@ -1,0 +1,9 @@
+---
+- name: install and configure webservers
+  hosts: all
+  vars_files: secret.yaml
+  remote_user: eugene
+  become: yes
+  roles:
+    - webservers
+    - dbservers

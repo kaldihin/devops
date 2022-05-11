@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  tasks:
+  - name: create a file
+    file: state=touch path=/home/eugene/test-file
+  - name: edit file
+    lineinfile: line="here is some text" path=/home/eugene/test-file
+    register: lif_info
+  - debug: msg="{{lif_info}}"
+  - name: run a command
+    become: yes
+    file:
+      name: /home/eugene/test-file
+      state: absent
