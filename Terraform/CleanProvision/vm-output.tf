@@ -1,17 +1,17 @@
 # Virtual machine output | vm-output.tf
 
-output "web-1-name" {
-  value = google_compute_instance.web_private_1.name
+output "vm1-ip" {
+  value = google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip
 }
 
-output "web-1-internal-ip" {
-  value = google_compute_instance.web_private_1.network_interface.0.network_ip
+output "vm2-ip" {
+  value = google_compute_instance.vm2.network_interface.0.access_config.0.nat_ip
 }
 
-output "web-2-name" {
-  value = google_compute_instance.web_private_2.name
+output "vm3-ip" {
+  value = google_compute_instance.vm3.network_interface.0.access_config.0.nat_ip
 }
 
-output "web-2-internal-ip" {
-  value = google_compute_instance.web_private_2.network_interface.0.network_ip
+output "lb-static-ip" {
+  value = google_compute_global_address.static_ip.address
 }

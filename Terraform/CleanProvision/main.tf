@@ -1,46 +1,19 @@
-
+# Defining provider and default settings
 provider "google" {
-  project     = var.project_name
-  region      = var.gcp_region_1
-  zone        = var.gcp_zone_1
+  project = var.project_name
+  region  = var.gcp_region
+  zone    = var.gcp_zone
 }
 
+# Defining VPC network
 resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
   auto_create_subnetworks = "true"
 }
 
-resource "google_compute_subnetwork" "subnet-a" {
-  name          = "subnet-a"
-  ip_cidr_range = var.subnet_a_cidr
-  region        = var.gcp_region_1
-  network       = google_compute_network.vpc_network.id
-
-#   purpose       = "INTERNAL_HTTPS_LOAD_BALANCER"
-#   role          = "ACTIVE"
-
-#   secondary_ip_range {
-#     range_name    = "tf-test-secondary-range-update1"
-#     ip_cidr_range = "192.168.10.0/24"
-#   }
-
-}
-
-resource "google_compute_subnetwork" "subnet-b" {
-  name          = "subnet-b"
-  ip_cidr_range = var.subnet_b_cidr
-  region        = var.gcp_region_1
-  network       = google_compute_network.vpc_network.id
-}
-
-# reserved IP address
-resource "google_compute_global_address" "default" {
-  provider = google-beta
-  name = "static-ip"
-}
-
-resource "google_compute_firewall" "terraform-rules" {
-  name    = "fw-rules"
+# Defining firewall rules
+resource "google_compute_firewall" "firewall_rules" {
+  name    = "tf-fw-rules"
   network = "terraform-network"
 
   allow {
@@ -58,181 +31,211 @@ resource "google_compute_firewall" "terraform-rules" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-#   source_tags = ["lb-backend"]
-  target_tags = ["lb-backend"]
+
+    depends_on = [
+      google_compute_network.vpc_network
+      ]
 
 }
 
-resource "google_compute_firewall" "tf-rules-http-lb" {
-  name = "fw-rules-http"
-  network = "terraform-network"
-
-  allow {
-      protocol = "tcp"
-  }
-
-  target_tags = ["lb-backend"]
-  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
-}
-
-resource "google_compute_default_service_account" "default" {
-  
-}
-
-data "google_compute_image" "my_image" {
-  family  = "debian-9"
+# Defining default image
+data "google_compute_image" "debian_image" {
+  family  = "debian-10"
   project = "debian-cloud"
 }
 
-resource "google_compute_instance_template" "instemplate1" {
-  name        = "instance-template1"
-  description = "This template is used to create instances."
 
-  tags = ["instance-t1"]
+resource "google_compute_instance_template" "instance_template" {
+  name_prefix  = "tf-vm"
+  machine_type = "e2-small"
+  region       = "us-central1"
+  zone         = var.gcp_zone
 
-#   labels = {
-#     environment = "dev"
-#   }
-
-  instance_description = "description assigned to instances"
-  machine_type         = "f1-micro"
-  can_ip_forward       = false
-
-  scheduling {
-    automatic_restart   = true
-    on_host_maintenance = "MIGRATE"
-  }
-
-  // Create a new boot disk from an image
-  disk {
-    source_image      = "debian-cloud/debian-9"
-    auto_delete       = true
-    boot              = true
+  boot_disk {
+    initialize_params {
+      image = data.google_compute_image.debian_image.self_link
+    }
   }
 
   network_interface {
     network = "terraform-network"
-    subnetwork = "subnet-a"
+
+    access_config {
+
+    }
   }
+
 
   metadata = {
     ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
   }
 
-  service_account {
-    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    # email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
-  }
+      depends_on = [
+      google_compute_network.vpc_network
+      ]
 }
 
-resource "google_compute_instance_template" "instemplate2" {
-  name        = "instance-template2"
-  description = "This template is used to create instances."
+resource "google_compute_instance_group_manager" "instance_group_manager" {
+  name               = "instance-group-manager"
+  instance_template  = google_compute_instance_template.instance_template.id
+  base_instance_name = "tf-vm"
+  zone               = "us-central1-a"
+  target_size        = "3"
+}
 
-  tags = ["instance-t2"]
 
-#   labels = {
-#     environment = "dev"
+
+# # Defining first vm1
+# resource "google_compute_instance" "vm1" {
+#   name         = "tf-vm1"
+#   machine_type = "e2-small"
+#   zone         = var.gcp_zone
+#   boot_disk {
+#     initialize_params {
+#       image = data.google_compute_image.debian_image.self_link
+#     }
 #   }
 
-  instance_description = "description assigned to instances"
-  machine_type         = "f1-micro"
-  can_ip_forward       = false
+#   network_interface {
+#     network = "terraform-network"
 
-  scheduling {
-    automatic_restart   = true
-    on_host_maintenance = "MIGRATE"
-  }
+#     access_config {
 
-  // Create a new boot disk from an image
-  disk {
-    source_image      = "debian-cloud/debian-9"
-    auto_delete       = true
-    boot              = true
-  }
+#     }
+#   }
 
-  network_interface {
-    network = "terraform-network"
-    subnetwork = "subnet-b"
-  }
+#   metadata = {
+#     ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
+#   }
 
-  metadata = {
-    ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
-  }
+#       depends_on = [
+#       google_compute_network.vpc_network
+#       ]
 
-  service_account {
-    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    # email  = google_service_account.default.email
-    scopes = ["cloud-platform"]
-  }
-}
-
-# resource "google_compute_instance_group_manager" "instance_group_manager" {
-#   name               = "instance-group-manager"
-#   instance_template  = google_compute_instance_template.instance_template.id
-#   base_instance_name = "instance-group-manager"
-#   zone               = "us-central1-f"
-#   target_size        = "1"
 # }
 
-resource "google_compute_health_check" "autohealing" {
-  name                = "autohealing-health-check"
-  check_interval_sec  = 5
-  timeout_sec         = 5
-  healthy_threshold   = 2
-  unhealthy_threshold = 10 # 50 seconds
-
-  http_health_check {
-    request_path = "/healthz"
-    port         = "80"
-  }
-}
-
-resource "google_compute_instance_group_manager" "mig1" {
-  name = "mig1"
-
-  base_instance_name = "inst"
-  zone               = var.gcp_zone_1
-
-  version {
-    instance_template  = google_compute_instance_template.instemplate1.id
-  }
-
-#   target_pools = [google_compute_target_pool.appserver.id]
-  target_size  = 2
-
-#   named_port {
-#     name = "customHTTP"
-#     port = 8888
+# # Defining first vm2
+# resource "google_compute_instance" "vm2" {
+#   name         = "tf-vm2"
+#   machine_type = "e2-small"
+#   zone         = var.gcp_zone
+#   boot_disk {
+#     initialize_params {
+#       image = data.google_compute_image.debian_image.self_link
+#     }
 #   }
 
-  auto_healing_policies {
-    health_check      = google_compute_health_check.autohealing.id
-    initial_delay_sec = 300
-  }
-}
+#   network_interface {
+#     network = "terraform-network"
+#     access_config {
 
-resource "google_compute_instance_group_manager" "mig2" {
-  name = "mig2"
-
-  base_instance_name = "inst"
-  zone               = var.gcp_zone_2
-
-  version {
-    instance_template  = google_compute_instance_template.instemplate2.id
-  }
-
-#   target_pools = [google_compute_target_pool.appserver.id]
-  target_size  = 2
-
-#   named_port {
-#     name = "customHTTP"
-#     port = 8888
+#     }
 #   }
 
-  auto_healing_policies {
-    health_check      = google_compute_health_check.autohealing.id
-    initial_delay_sec = 300
+#   metadata = {
+#     ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
+#   }
+
+#       depends_on = [
+#       google_compute_network.vpc_network
+#       ]
+# }
+
+# # Defining first vm3
+# resource "google_compute_instance" "vm3" {
+#   name         = "tf-vm3"
+#   machine_type = "e2-small"
+#   zone         = var.gcp_zone
+#   boot_disk {
+#     initialize_params {
+#       image = data.google_compute_image.debian_image.self_link
+#     }
+#   }
+
+#   network_interface {
+#     network = "terraform-network"
+#     access_config {
+
+#     }
+#   }
+
+#   metadata = {
+#     ssh-keys = "${var.gce_ssh_user}:${var.gce_ssh_pub_key_file}"
+#   }
+
+#       depends_on = [
+#       google_compute_network.vpc_network
+#       ]
+# }
+
+# Creating instance group
+resource "google_compute_instance_group" "instance_group" {
+  name = "tf-instance-group"
+  zone = var.gcp_zone
+  instances = [google_compute_instance.tf-vm1.id,
+    google_compute_instance.tf-vm2.id,
+  google_compute_instance.tf-vm3.id, ]
+
+  named_port {
+    name = "http"
+    port = "80"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+      depends_on = [
+      google_compute_network.vpc_network
+      ]
+}
+
+# Reserving static IP address
+resource "google_compute_global_address" "static_ip" {
+  provider = google-beta
+  name     = "tf-static-ip"
+}
+
+# Creating forwarding rule
+resource "google_compute_global_forwarding_rule" "forward_rule" {
+  name       = "fw-rule-port-80"
+  ip_address = google_compute_global_address.static_ip.address
+  port_range = "80"
+  target     = google_compute_target_http_proxy.http_proxy.self_link
+}
+
+# Creating URL map
+resource "google_compute_url_map" "url_map" {
+  name            = "url-map"
+  default_service = google_compute_backend_service.backend_service.self_link
+}
+
+# Creating http proxy
+resource "google_compute_target_http_proxy" "http_proxy" {
+  name    = "http-proxy"
+  url_map = google_compute_url_map.url_map.self_link
+}
+
+# Defining backend service
+resource "google_compute_backend_service" "backend_service" {
+  name      = "tf-backend-service"
+  port_name = "http"
+  protocol  = "HTTP"
+
+  backend {
+    group = google_compute_instance_group.instance_group.id
+  }
+
+  health_checks = [
+    google_compute_http_health_check.healthcheck.id
+  ]
+}
+
+# Defining health check
+resource "google_compute_http_health_check" "healthcheck" {
+  name         = "tf-healthcheck"
+  request_path = "/"
+
+  timeout_sec        = 1
+  check_interval_sec = 1
 }
