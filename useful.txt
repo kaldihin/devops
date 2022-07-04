@@ -932,4 +932,36 @@ sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org
 
 ======================================================================================
 
+# Enabling minikube autostart
+
+# Create a systemd file
+sudo vim /etc/systemd/system/minikube.service
+
+# Fill this content in that file
+[Unit]
+Description=Runs minikube on startup
+After=docker.service
+
+[Service]
+ExecStart=/usr/bin/minikube start
+ExecStop=/usr/bin/minikube stop
+Type=oneshot
+RemainAfterExit=yes
+User=eugene
+Group=eugene
+
+[Install]
+WantedBy=multi-user.target
+
+# Restart systemd daemon and enabling minikube, better to stop minikube before this operations
+systemctl daemon-reload
+
+systemctl start minikube
+
+systemctl enable minikube
+
+======================================================================================
+
+
+
 
