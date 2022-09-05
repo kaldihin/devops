@@ -962,6 +962,24 @@ systemctl enable minikube
 
 ======================================================================================
 
+https://arny.ru/virtualization/uvelichenie-lvm-v-virtualnoy-mashine-ubuntu/
 
+# Ubuntu Server disk resize PV LV
+# Изменение размера диска в Ubuntu Server
 
+# Находим нужный раздел , например /dev/sda
+sudo fdisk -l
+
+# Необязательно возможно
+sudo parted /dev/sda
+
+sudo pvresize /dev/sda3
+
+# увеличиваем размер физического раздела LVM до максимально возможного
+sudo lvextend /dev/mapper/ubuntu--vg-ubuntu--lv -l +100%FREE
+
+# увеличиваем размер логического раздела LVM до максимально возможного
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv
+
+======================================================================================
 
