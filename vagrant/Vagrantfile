@@ -1,0 +1,58 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "bento/debian-11"
+  
+  config.vm.provider "vmware-desktop" do |v|
+    v.vmx["memsize"] = "8192"
+    v.vmx["numvcpus"] = "4"
+  end
+
+  config.vm.define "zookeeper01" do |zookeeper01|
+    zookeeper01.vm.hostname = "zookeeper01"
+    zookeeper01.vm.network "public_network", ip: "192.168.0.160"
+    zookeeper01.vm.disk :disk, size: "100GB", primary: true
+    zookeeper01.vm.provision "shell", type: "shell", inline:<<-SHELL
+    sudo useradd -m -s /bin/bash -d /home/eugene -G sudo eugene
+    sudo echo eugene:Qwerty123 | sudo chpasswd
+    echo "" >> /home/eugene/.bashrc
+    echo "cd ~" >> /home/eugene/.bashrc
+    mkdir /home/eugene/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtEyVBylUrtpD7AdjDaTaSwJBoDJuEOdW1HnZupwYKLrRsy+fstUp4hTTmthIeRqaI2P+MYD53wj/AxwUwxdKIfT5aRFMGCsm8GwI4dBe3DEelSxJMJXcXMmj4xCyMjxTxs13EsXYORFs8RfSGhPeEF3TcxwlI7f52V7362vtgTShN7UoXI8xNwmfblKb2oUrHg1LiJYel0tuptJAjMHzSp5VRg3qoHYmUyuNnZPgqiC3PIBhjUHwO4vORgd5r08CSYwh8438yAIH5nw7ki7x0uyP8fcGneQsu9j9dKJlZYwZ0uJgBGDVfoNOVcwet22MDLDBPjrKTcgzcyLG+oVd3tCKR5/FkIpv2HnKvfAA/M80f8b7RWJy1JUI+0Tf2e1u/lOiSoPu/7XAp7U8eHzzunqreObwtMJRwCtAF/mdPdSEsjT+eCaSomMn3doB4KNm4++m/di9GAaw4YNHI/14zuJJbSNCutEm2l6PtyYeVeNUUTvpWObHI4ZgOFzhfbVOyvfmae/x6ynr+cEPOfFQlZHJnfCzPFDLG297i92WF4KgWtkUX3+/iaXAsGmNjMnfH66n61Z2eQlDsz8l0WwKocqqJ99EISmFOpDeJ5ZxchEwuvkGjewznBB/hZ1UCPdblkdqGm2yRz/TGBVtvnzeccZFB3VdZPiLz1oz/3s8/cw== eugene@cent9kubnode1" > /home/eugene/.ssh/authorized_keys
+    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+    sudo systemctl restart sshd
+    SHELL
+  end
+
+  config.vm.define "zookeeper02" do |zookeeper02|
+    zookeeper02.vm.hostname = "zookeeper02"
+    zookeeper02.vm.network "public_network", ip: "192.168.0.161"
+    zookeeper02.vm.disk :disk, size: "100GB", primary: true
+    zookeeper02.vm.provision "shell", type: "shell", inline:<<-SHELL
+    sudo useradd -m -s /bin/bash -d /home/eugene -G sudo eugene
+    sudo echo eugene:Qwerty123 | sudo chpasswd
+    echo "" >> /home/eugene/.bashrc
+    echo "cd ~" >> /home/eugene/.bashrc
+    mkdir /home/eugene/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtEyVBylUrtpD7AdjDaTaSwJBoDJuEOdW1HnZupwYKLrRsy+fstUp4hTTmthIeRqaI2P+MYD53wj/AxwUwxdKIfT5aRFMGCsm8GwI4dBe3DEelSxJMJXcXMmj4xCyMjxTxs13EsXYORFs8RfSGhPeEF3TcxwlI7f52V7362vtgTShN7UoXI8xNwmfblKb2oUrHg1LiJYel0tuptJAjMHzSp5VRg3qoHYmUyuNnZPgqiC3PIBhjUHwO4vORgd5r08CSYwh8438yAIH5nw7ki7x0uyP8fcGneQsu9j9dKJlZYwZ0uJgBGDVfoNOVcwet22MDLDBPjrKTcgzcyLG+oVd3tCKR5/FkIpv2HnKvfAA/M80f8b7RWJy1JUI+0Tf2e1u/lOiSoPu/7XAp7U8eHzzunqreObwtMJRwCtAF/mdPdSEsjT+eCaSomMn3doB4KNm4++m/di9GAaw4YNHI/14zuJJbSNCutEm2l6PtyYeVeNUUTvpWObHI4ZgOFzhfbVOyvfmae/x6ynr+cEPOfFQlZHJnfCzPFDLG297i92WF4KgWtkUX3+/iaXAsGmNjMnfH66n61Z2eQlDsz8l0WwKocqqJ99EISmFOpDeJ5ZxchEwuvkGjewznBB/hZ1UCPdblkdqGm2yRz/TGBVtvnzeccZFB3VdZPiLz1oz/3s8/cw== eugene@cent9kubnode1" > /home/eugene/.ssh/authorized_keys
+    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+    sudo systemctl restart sshd
+    SHELL
+  end
+
+  config.vm.define "zookeeper03" do |zookeeper03|
+    zookeeper03.vm.hostname = "zookeeper03"
+    zookeeper03.vm.network "public_network", ip: "192.168.0.162"
+    zookeeper03.vm.disk :disk, size: "100GB", primary: true
+    zookeeper03.vm.provision "shell", type: "shell", inline:<<-SHELL
+    sudo useradd -m -s /bin/bash -d /home/eugene -G sudo eugene
+    sudo echo eugene:Qwerty123 | sudo chpasswd
+    echo "" >> /home/eugene/.bashrc
+    echo "cd ~" >> /home/eugene/.bashrc
+    mkdir /home/eugene/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCtEyVBylUrtpD7AdjDaTaSwJBoDJuEOdW1HnZupwYKLrRsy+fstUp4hTTmthIeRqaI2P+MYD53wj/AxwUwxdKIfT5aRFMGCsm8GwI4dBe3DEelSxJMJXcXMmj4xCyMjxTxs13EsXYORFs8RfSGhPeEF3TcxwlI7f52V7362vtgTShN7UoXI8xNwmfblKb2oUrHg1LiJYel0tuptJAjMHzSp5VRg3qoHYmUyuNnZPgqiC3PIBhjUHwO4vORgd5r08CSYwh8438yAIH5nw7ki7x0uyP8fcGneQsu9j9dKJlZYwZ0uJgBGDVfoNOVcwet22MDLDBPjrKTcgzcyLG+oVd3tCKR5/FkIpv2HnKvfAA/M80f8b7RWJy1JUI+0Tf2e1u/lOiSoPu/7XAp7U8eHzzunqreObwtMJRwCtAF/mdPdSEsjT+eCaSomMn3doB4KNm4++m/di9GAaw4YNHI/14zuJJbSNCutEm2l6PtyYeVeNUUTvpWObHI4ZgOFzhfbVOyvfmae/x6ynr+cEPOfFQlZHJnfCzPFDLG297i92WF4KgWtkUX3+/iaXAsGmNjMnfH66n61Z2eQlDsz8l0WwKocqqJ99EISmFOpDeJ5ZxchEwuvkGjewznBB/hZ1UCPdblkdqGm2yRz/TGBVtvnzeccZFB3VdZPiLz1oz/3s8/cw== eugene@cent9kubnode1" > /home/eugene/.ssh/authorized_keys
+    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+    sudo systemctl restart sshd
+    SHELL
+  end
+
+end
